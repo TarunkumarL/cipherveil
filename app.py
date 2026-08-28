@@ -8,8 +8,8 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
 # --- PAGE CONFIG & SESSION STATE ---
 st.set_page_config(
-    page_title="TECH-OPS || CYBER COMMAND VAULT",
-    page_icon="🛰️",
+    page_title="|| CIPHERVEIL ||",
+    page_icon="🛡️",
     layout="centered"
 )
 
@@ -303,7 +303,7 @@ def extract_data_from_image(stego_image: Image.Image) -> bytes:
         if all_bytes.endswith(DELIMITER):
             return bytes(all_bytes[:-delimiter_len])
             
-    raise ValueError("[AUTH BREACH] No valid signature or encrypted payload detected.")
+    raise ValueError("[ERROR] No valid signature or encrypted payload detected.")
 
 
 # --- 3. VIEWS & NAVIGATION ---
@@ -312,14 +312,14 @@ def extract_data_from_image(stego_image: Image.Image) -> bytes:
 # VIEW 1: TECH-OPS COMMAND VAULT
 # =======================================================
 if st.session_state.page == "home":
-    st.markdown("<h1 class='techops-title'>🛰️ TECH-OPS COMMAND 🛰️</h1>", unsafe_allow_html=True)
-    st.markdown("<p class='techops-subtitle'>[ TACTICAL CYBER DEFENSE & COVERT DATA EXFILTRATION ]</p>", unsafe_allow_html=True)
+    st.markdown("<h1 class='techops-title'>🛡️ CIPHERVEIL 🛡️</h1>", unsafe_allow_html=True)
+    st.markdown("<p class='techops-subtitle'>[ TACTICAL CYBER DEFENSE & SECURE DATA HIDING ]</p>", unsafe_allow_html=True)
     
     st.markdown(
         """
         <div style='text-align: center; margin-bottom: 25px;'>
-            <span class='ops-badge'>STATUS: ARMED</span>
-            <span class='ops-badge'>CIPHER: AES-256</span>
+            <span class='ops-badge'>SYSTEM: ONLINE</span>
+            <span class='ops-badge'>ENCRYPTION: ACTIVE</span>
             <span class='ops-badge'>KDF: PBKDF2-SHA256</span>
             <span class='ops-badge'>CARRIER: LSB-PIXEL</span>
         </div>
@@ -331,7 +331,7 @@ if st.session_state.page == "home":
     
     with col1:
         with st.container(border=True):
-            st.markdown("<div class='card-title-amber'>|| ENCRYPT & CLOAK ||</div>", unsafe_allow_html=True)
+            st.markdown("<div class='card-title-amber'>|| 🔐 ENCRYPT & EMBED ||</div>", unsafe_allow_html=True)
             st.markdown("<div class='card-desc'>Encrypt classified payload with AES-256 and inject into carrier image bitplanes.</div>", unsafe_allow_html=True)
             if st.button("INITIALIZE ENCRYPTION ➔", type="primary", use_container_width=True):
                 set_page("encrypt")
@@ -339,14 +339,14 @@ if st.session_state.page == "home":
 
     with col2:
         with st.container(border=True):
-            st.markdown("<div class='card-title-cyan'>|| EXTRACT & UNVEIL || </div>", unsafe_allow_html=True)
+            st.markdown("<div class='card-title-cyan'>|| 🔓 EXTRACT & DECRYPT || </div>", unsafe_allow_html=True)
             st.markdown("<div class='card-desc'>Extract concealed bitstream from carrier image and restore original classified data.</div>", unsafe_allow_html=True)
             if st.button("INITIALIZE DECRYPTOR ➔", type="secondary", use_container_width=True):
                 set_page("decrypt")
                 st.rerun()
 
     st.markdown("<br><hr style='border-color: #1e293b;'>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #475569; font-size: 0.75rem;'>TECH-OPS SECURITY CONSOLE v3.0 • VTU MINI-PROJECT</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #475569; font-size: 0.75rem;'>CIPHERVEIL CONSOLE </p>", unsafe_allow_html=True)
 
 
 # =======================================================
@@ -447,4 +447,4 @@ elif st.session_state.page == "decrypt":
                     st.code(extracted_ciphertext.decode(), language="text")
                     
             except Exception as e:
-                st.error("❌ [AUTH REJECTED] Passphrase mismatch or corrupted bitplanes.")
+                st.error("❌ [ERROR] Passphrase mismatch or corrupted bitplanes.")
